@@ -1,4 +1,4 @@
-# Rock Paper Sicssors game
+# Rock Paper Scissors game
 
 import random
 def game():
