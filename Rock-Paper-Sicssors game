@@ -1,0 +1,34 @@
+# Rock Paper Sicssors game
+
+import random
+def game():
+    while True:
+        user_action = input("Enter your choice (Rock, Paper, Scissors):\n ")                                                  #choice here
+        possible_actions = ["Rock", "Paper", "Scissors \n"]
+        computer_action = random.choice(possible_actions)
+        print(f"You chose {user_action}, computer chose {computer_action}.")
+        if user_action == computer_action:
+            print(f"Both the players have selected {user_action}. OHHH! Its a tie ^o^")
+        elif user_action == "Rock":
+            if computer_action == "Scissors":
+                print("Rock smashes scissors! Yahhoo, you won the match :-)")
+            else:
+                print("Paper covers rock! You lost the match >_<.")
+        elif user_action == "Paper":
+            if computer_action == "Rock":
+                print("Paper covers rock! Yahhoo you won the match :-).")
+            else:
+                print("Scissors cuts paper! You lost the match >_<.")
+        elif user_action == "Scissors":
+            if computer_action == "Paper":
+                print("Scissors cuts paper! Yahhoo you won the match :-)")
+            else:
+                print("Rock smashes Scissors! You lost the match >_<.")
+
+        play_again = input("Do you wanna try again? (yes/no): \n")
+        if play_again.lower() != "no":
+            continue
+        else:
+             break
+if __name__ == "__main__":
+    game()
