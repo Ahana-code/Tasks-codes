@@ -1,0 +1,41 @@
+board = ['|_|', '|_|', '|_|',
+         '|_|', '|_|', '|_|',
+         '|_|', '|_|', '|_|']
+
+def print_board():
+    for i in range(3):
+        print(' '.join(board[i*3:i*3+3]))
+
+def check_win(player):
+    for i in range(3):
+        if all(board[i*3+j] == player for j in range(3)) or all(board[i+3*j] == player for j in range(3)):
+            return True
+    if all(board[i] == player for i in [0, 4, 8]) or all(board[i] == player for i in [2, 4, 6]):
+        return True
+    return False
+
+def check_draw():
+    return '|_|' not in board
+
+current_player = 'X'
+
+while True:
+    print_board()
+    
+    move = int(input(f"Player {current_player}, enter your choice ^>^ (1-9): ")) - 1
+    
+    if board[move] == '|_|':
+        board[move] = current_player
+        
+        if check_win(current_player):
+            print_board()
+            print(f"Yahoo! Player {current_player} won the game :-) !")
+            break
+        elif check_draw():
+            print_board()
+            print("Ohh!It's a tie '-' ")
+            break
+        
+        current_player = 'O' if current_player == 'X' else 'X'
+    else:
+        print("HUH! This position was already taken 0>0.\n")
